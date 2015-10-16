@@ -6,5 +6,6 @@
 			'ngCookies',
 			'ngResource',
 			'ui.router'
+			'ui.bootstrap',
 		]);
 })();
