@@ -5,7 +5,9 @@
 		.module('mustDoApp', [
 			'ngCookies',
 			'ngResource',
-			'ui.router'
+			'ngAnimate',
+			'ui.router',
 			'ui.bootstrap',
+			'toaster'
 		]);
 })();
