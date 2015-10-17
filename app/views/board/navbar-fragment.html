@@ -1,0 +1,22 @@
+<ul class="nav navbar-nav navbar-right">
+	<li class="dropdown">
+		<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			{{board.name}}
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="" ng-click="openRenameModal()">
+					<i class="fa fa-pencil"></i>
+					Rename
+				</a>
+			</li>
+			<li>
+				<a href="" ng-click="openRemoveModal()">
+					<i class="fa fa-trash"></i>
+					Delete
+				</a>
+			</li>
+		</ul>
+	</li>
+</ul>

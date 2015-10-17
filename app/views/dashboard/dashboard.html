@@ -26,7 +26,8 @@
 
 		<div class="col-xs-12 col-sm-4 col-md-3"
 			 ng-repeat="board in boards">
-			<div class="board clickable">
+			<div class="board clickable"
+				 ng-click="openBoard(board)">
 				<strong>{{board.name}}</strong>
 			</div>
 		</div>
