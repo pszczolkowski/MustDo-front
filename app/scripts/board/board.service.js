@@ -5,10 +5,10 @@
 		.module('mustDoApp')
 		.factory('Board', Board);
 
-	Board.$inject = ['$resource'];
+	Board.$inject = ['$resource', 'config'];
 
-	function Board($resource) {
-		return $resource('/api/board/:boardId', {}, {
+	function Board($resource, config) {
+		return $resource(config.apiUrl + '/board/:boardId', {}, {
 			update: {
 				url: '/api/board',
 				method: 'PUT'
