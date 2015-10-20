@@ -22,6 +22,8 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#/">MustDo</a>
+
+					<span ui-view="navbar"></span>
 				</div>
 			</div>
 		</div>
@@ -50,6 +52,18 @@
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/app.config.js"></script>
+
+	<script src="scripts/board/board.controller.js"></script>
+	<script src="scripts/board/board.route.js"></script>
+	<script src="scripts/board/board.service.js"></script>
+	<script src="scripts/board/board-navbarFragment.controller.js"></script>
+	<script src="scripts/board/board-remove-modal.controller.js"></script>
+	<script src="scripts/board/board-rename-modal.controller.js"></script>
+	<script src="scripts/board/board-wizard.controller.js"></script>
+	<script src="scripts/board/board-wizard.service.js"></script>
+
+	<script src="scripts/dashboard/dashboard.controller.js"></script>
+	<script src="scripts/dashboard/dashboard.route.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

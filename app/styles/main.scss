@@ -4,6 +4,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import "dashboard/_dashboard";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -88,4 +90,12 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.btn {
+	transition: 0.2s ease;
 }
