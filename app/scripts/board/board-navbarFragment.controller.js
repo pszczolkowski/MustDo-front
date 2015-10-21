@@ -10,9 +10,10 @@
 		'$state',
 		'toaster',
 		'BoardWizard',
+		'Board',
 		'board'];
 
-	function BoardNavbarFragmentController($scope, $state, toaster, BoardWizard, board) {
+	function BoardNavbarFragmentController($scope, $state, toaster, BoardWizard, Board, board) {
 		$scope.board = board;
 		$scope.openRenameModal = openRenameModal;
 		$scope.openRemoveModal = openRemoveModal;
@@ -21,8 +22,17 @@
 		function openRenameModal() {
 			BoardWizard.rename($scope.board)
 				.then(function () {
+					reloadBoard();
 					toaster.pop('success', 'Renamed', 'Board has been renamed');
 				});
+		}
+
+		function reloadBoard() {
+			Board.get({
+				boardId: $scope.board.id
+			}).$promise.then(function (board) {
+				$scope.board = board;
+			});
 		}
 
 		function openRemoveModal() {

@@ -10,7 +10,7 @@
 	function Board($resource, config) {
 		return $resource(config.apiUrl + '/board/:boardId', {}, {
 			update: {
-				url: '/api/board',
+				url: config.apiUrl + '/board',
 				method: 'PUT'
 			}
 		});
