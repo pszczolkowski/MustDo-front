@@ -21,7 +21,7 @@
 		function rename() {
 			var list = new List();
 			angular.extend(list, $scope.list);
-			list.name = list.name;
+			list.name = $scope.name;
 
 			list.$update().then(function () {
 				$modalInstance.close();
