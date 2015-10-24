@@ -4,6 +4,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import "board/_board";
 @import "dashboard/_dashboard";
 
 .browsehappy {

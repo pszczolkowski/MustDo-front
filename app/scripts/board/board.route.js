@@ -9,6 +9,7 @@
 
 	function BoardRouteProvider($stateProvider) {
 		var resolveSingleBoard = ['$stateParams', 'Board', loadSingleBoard];
+		var resolveLists = ['$stateParams', 'List', loadLists];
 
 		$stateProvider.state('board', {
 			url: '/board/{boardId}/{boardName}',
@@ -24,13 +25,20 @@
 				}
 			},
 			resolve: {
-				board: resolveSingleBoard
+				board: resolveSingleBoard,
+				lists: resolveLists
 			}
 		});
 
 
 		function loadSingleBoard($stateParams, Board) {
 			return Board.get({
+				boardId: $stateParams.boardId
+			}).$promise;
+		}
+
+		function loadLists($stateParams, List) {
+			return List.query({
 				boardId: $stateParams.boardId
 			}).$promise;
 		}
