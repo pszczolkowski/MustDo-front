@@ -1,1 +1,34 @@
-<!-- here go lists -->
+<div ng-repeat="list in lists"
+	 class="list">
+
+	<header>
+		<strong>{{list.name}}</strong>
+
+		<span class="dropdown pull-right">
+			<button class="btn btn-xs" title="Options" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-bars"></i>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="" ng-click="openRenameListModal(list)">
+						<i class="fa fa-pencil"></i>
+						Rename
+					</a>
+				</li>
+				<li>
+					<a href="" ng-click="openRemoveListModal(list)">
+						<i class="fa fa-trash"></i>
+						Delete
+					</a>
+				</li>
+			</ul>
+		</span>
+	</header>
+
+
+</div>
+
+<button class="btn btn-success" ng-click="openListWizard()">
+	<i class="fa fa-plus"></i>
+	Add new list
+</button>
