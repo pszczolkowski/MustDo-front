@@ -17,20 +17,12 @@
 </head>
 <body ng-app="mustDoApp">
 
-	<div class="header">
-		<div class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#/">MustDo</a>
-
-					<span ui-view="navbar"></span>
-				</div>
-			</div>
-		</div>
+	<div class="header" ng-controller="NavbarController">
+		<div ui-view="navbar"></div>
 	</div>
 
 	<div class="container-fluid">
-		<ui-view />
+		<div ui-view="content"></div>
 	</div>
 
 	<toaster-container toaster-options="{'position-class': 'toast-bottom-right'}"></toaster-container>
@@ -73,11 +65,15 @@
 	<script src="scripts/dashboard/dashboard.controller.js"></script>
 	<script src="scripts/dashboard/dashboard.route.js"></script>
 
+	<script src="scripts/interceptor/auth.interceptor.js"></script>
+
 	<script src="scripts/list/list.service.js"></script>
 	<script src="scripts/list/list-remove-modal.controller.js"></script>
 	<script src="scripts/list/list-rename-modal.controller.js"></script>
 	<script src="scripts/list/list-wizard.controller.js"></script>
 	<script src="scripts/list/list-wizard.service.js"></script>
+	<script src="scripts/navbar/navbar.controller.js"></script>
+	<script src="scripts/util/base64.service.js"></script>
 	<!-- endbuild -->
 </body>
 </html>
