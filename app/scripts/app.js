@@ -3,6 +3,7 @@
 
 	angular
 		.module('mustDoApp', [
+			'LocalStorageModule',
 			'ngCookies',
 			'ngResource',
 			'ngAnimate',
