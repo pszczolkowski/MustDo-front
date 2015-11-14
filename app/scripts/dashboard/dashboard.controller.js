@@ -17,6 +17,8 @@
 		$scope.boards = boards;
 		$scope.openBoardWizard = openBoardWizard;
 		$scope.openBoard = openBoard;
+		$scope.openRenameModal = openRenameModal;
+		$scope.openRemoveModal = openRemoveModal;
 
 
 		function openBoardWizard() {
@@ -36,6 +38,22 @@
 
 		function openBoard(board) {
 			$state.go('board', {boardId: board.id, boardName: board.name});
+		}
+
+		function openRenameModal(board) {
+			BoardWizard.rename(board)
+				.then(function () {
+					reloadBoards();
+					toaster.pop('success', 'Renamed', 'Board has been renamed');
+				});
+		}
+
+		function openRemoveModal(board) {
+			BoardWizard.remove(board)
+				.then(function () {
+					reloadBoards();
+					toaster.pop('success', 'Deleted', 'Board has been deleted');
+				});
 		}
 	}
 })();

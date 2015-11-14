@@ -16,7 +16,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body {
-  padding: 0;
+	font-family: RobotoDraft, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+	padding: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -98,6 +99,12 @@ body {
 	cursor: pointer;
 }
 
-.btn {
-	transition: 0.2s ease;
+.btn-main-action {
+	bottom: 22px;
+	position: fixed !important;
+	right: 22px;
+}
+
+.btn-no-margin {
+	margin: 0 !important;
 }

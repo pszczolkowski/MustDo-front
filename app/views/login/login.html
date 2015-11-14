@@ -1,33 +1,31 @@
-<div class="container">
-	<div class="card card-container">
-		<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-		<p id="profile-name" class="profile-name-card"></p>
+<div class="card card-container">
+	<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+	<p id="profile-name" class="profile-name-card"></p>
 
-		<div ng-show="authenticationError" class="alert alert-danger">
-			Invalid login or password
-		</div>
-
-		<form class="form-signin" ng-submit="login($event)">
-			<span id="reauth-email" class="reauth-email"></span>
-			<input type="text"
-				   class="form-control"
-				   placeholder="Username"
-				   ng-model="username"
-				   required
-				   autofocus>
-			<input type="password"
-				   class="form-control"
-				   placeholder="Password"
-				   ng-model="password"
-				   required>
-			<!--<div id="remember" class="checkbox">-->
-				<!--<label>-->
-					<!--<input type="checkbox" value="remember-me"> Remember me-->
-				<!--</label>-->
-			<!--</div>-->
-			<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-
-			<a ui-sref="register">or sign up</a>
-		</form>
+	<div ng-show="authenticationError" class="alert alert-danger">
+		Invalid login or password
 	</div>
+
+	<form class="form-signin" ng-submit="login($event)">
+		<span id="reauth-email" class="reauth-email"></span>
+		<input type="text"
+			   class="form-control"
+			   placeholder="Username"
+			   ng-model="username"
+			   required
+			   autofocus>
+		<input type="password"
+			   class="form-control"
+			   placeholder="Password"
+			   ng-model="password"
+			   required>
+		<!--<div id="remember" class="checkbox">-->
+			<!--<label>-->
+				<!--<input type="checkbox" value="remember-me"> Remember me-->
+			<!--</label>-->
+		<!--</div>-->
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+		<a ui-sref="register">or sign up</a>
+	</form>
 </div>
