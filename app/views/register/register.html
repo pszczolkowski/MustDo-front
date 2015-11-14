@@ -1,0 +1,80 @@
+<div class="container">
+	<div class="card card-container">
+		<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+		<p id="profile-name" class="profile-name-card"></p>
+
+		<div class="alert alert-danger" ng-show="errors.usernameAlreadyExists">
+			User with that username already exists
+		</div>
+
+		<form class="form-signin" name="registerForm" ng-submit="register($event)" novalidate>
+			<span id="reauth-email" class="reauth-email"></span>
+			<input type="text"
+				   class="form-control"
+				   name="username"
+				   placeholder="Username"
+				   ng-model="username"
+				   ng-model-options="{ debounce: 250 }"
+				   required
+				   ng-minlength="3"
+				   ng-maxlength="20"
+				   ng-pattern="'[a-z0-9]*'"
+				   autofocus>
+
+			<p class="text-danger" ng-show="submitted && registerForm.username.$error.minlength">
+				Username too short. It has to be at least 3 characters long
+			</p>
+			<p class="text-danger" ng-show="submitted && registerForm.username.$error.maxlength">
+				Username too long. It can contain maximum 20 characters
+			</p>
+			<p class="text-danger" ng-show="submitted && registerForm.username.$error.pattern">
+				Username contains invalid characters
+			</p>
+			<p class="text-danger" ng-show="submitted && registerForm.username.$error.required">
+				Username is required
+			</p>
+			<p class="text-danger" ng-show="errors['loginAlreadyInUse']">
+				Username is already in use
+			</p>
+
+			<input type="password"
+				   class="form-control"
+				   name="password"
+				   placeholder="Password"
+				   ng-model="password"
+				   ng-model-options="{ debounce: 250 }"
+				   required
+				   ng-minlength="5"
+				   ng-maxlength="30">
+
+			<p class="text-danger" ng-show="submitted && registerForm.password.$error.minlength">
+				Password too short. It has to be at least 3 characters long
+			</p>
+			<p class="text-danger" ng-show="submitted && registerForm.password.$error.maxlength">
+				Password too long. It can contain maximum 20 characters
+			</p>
+			<p class="text-danger" ng-show="submitted && registerForm.password.$error.required">
+				Password is required
+			</p>
+
+			<input type="password"
+				   class="form-control"
+				   name="confirmPassword"
+				   placeholder="Confirm password"
+				   ng-model="confirmPassword"
+				   ng-model-options="{ debounce: 250 }"
+				   required>
+
+			<p class="text-danger" ng-show="submitted && password !== confirmPassword">
+				Passwords don't match
+			</p>
+
+			<button class="btn btn-lg btn-primary btn-block btn-signin"
+					type="submit">
+				Sign up
+			</button>
+
+			<a ui-sref="login">or sign in</a>
+		</form>
+	</div>
+</div>

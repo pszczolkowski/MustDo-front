@@ -12,14 +12,15 @@
 		var resolveLists = ['$stateParams', 'List', loadLists];
 
 		$stateProvider.state('board', {
+			parent: 'root',
 			url: '/board/{boardId}/{boardName}',
 			controller: 'BoardController',
 			views: {
-				'@': {
+				'': {
 					templateUrl: 'views/board/board.html',
-					controller: 'BoardController'
+					controller: 'BoardController',
 				},
-				navbar: {
+				'fragment': {
 					templateUrl: 'views/board/navbar-fragment.html',
 					controller: 'BoardNavbarFragmentController'
 				}

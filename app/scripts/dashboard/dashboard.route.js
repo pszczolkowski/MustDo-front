@@ -11,6 +11,7 @@
 		var resolveBoards = ['Board', loadBoards];
 
 		$stateProvider.state('dashboard', {
+			parent: 'root',
 			url: '/',
 			templateUrl: 'views/dashboard/dashboard.html',
 			controller: 'DashboardController',
