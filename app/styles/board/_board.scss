@@ -3,3 +3,22 @@
 	margin-right: 20px;
 	width: 270px;
 }
+
+.task {
+	border: 1px solid #ccc;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+.edit-icon {
+	color: #999;
+	display: none !important;
+
+	&:hover {
+		color: black;
+	}
+}
+
+.editable:hover .edit-icon {
+	display: inline-block !important;
+}

@@ -2,13 +2,17 @@
 	 class="list panel panel-default">
 	<div class="panel-body">
 		<header>
-			<strong>{{list.name}}</strong>
-
 			<span class="dropdown pull-right">
 				<button class="btn btn-xs btn-no-margin" title="Options" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-bars"></i>
 				</button>
 				<ul class="dropdown-menu">
+					<li>
+						<a href="" ng-click="openTaskWizard(list)">
+							<i class="fa fa-plus"></i>
+							Add task
+						</a>
+					</li>
 					<li>
 						<a href="" ng-click="openRenameListModal(list)">
 							<i class="fa fa-pencil"></i>
@@ -23,7 +27,16 @@
 					</li>
 				</ul>
 			</span>
+
+			<strong>{{list.name}}</strong>
 		</header>
+
+		<div class="task editable clickable"
+			 ng-repeat="task in list.tasks"
+			 ng-click="openTaskDetails(task)">
+			{{task.title}}
+			<i class="fa fa-pencil pull-right edit-icon"></i>
+		</div>
 	</div>
 </div>
 
