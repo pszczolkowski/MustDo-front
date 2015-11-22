@@ -9,6 +9,9 @@
 		.module('mustDoApp')
 		.constant('config', config)
 		.run(function ($rootScope, $state, Principal, Auth) {
+			$.material.init();
+			$.material.ripples();
+
 			$rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
 				$rootScope.toState = toState;
 				$rootScope.toStateParams = toStateParams;

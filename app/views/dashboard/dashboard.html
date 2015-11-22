@@ -1,36 +1,62 @@
 <div ng-show="boards.length === 0" class="row">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 		<div class="alert alert-info text-center">
-			You have no boards
+			You have no boards.
+			<a href="" class="alert-link" ng-click="openBoardWizard()">Create one</a>
 		</div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
-		<button class="btn btn-success btn-block btn-lg" ng-click="openBoardWizard()">
-			<i class="fa fa-plus"></i>
-			Create new board
-		</button>
-	</div>
-</div>
-
-<br />
 
 <div ng-if="boards.length > 0">
-	<h2>
-		Your boards
-	</h2>
+	<div class="row">
+		<div class="col-sm-8">
+			<h2>
+				Your boards
+			</h2>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-success btn-raised ripple-effect hidden-xs pull-right"
+					title="Create new board"
+					ng-click="openBoardWizard()">
+				Create new board
+			</button>
+		</div>
+	</div>
 
-	<div id="dashboard-boards-list" class="row">
+	<div class="row" id="dashboard-boards-list">
+		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="board in boards">
+			<div class="panel panel-default clickable" ng-click="$event.originalEvent.menuClicked || openBoard(board)">
+				<div class="panel-body">
+					<strong>{{board.name}}</strong>
 
-		<div class="col-xs-12 col-sm-4 col-md-3"
-			 ng-repeat="board in boards">
-			<div class="board clickable"
-				 ng-click="openBoard(board)">
-				<strong>{{board.name}}</strong>
+					<span class="dropdown pull-right" ng-click="$event.originalEvent.menuClicked = true">
+						<button class="btn btn-xs btn-no-margin" title="Options" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-bars"></i>
+						</button>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="" ng-click="openRenameModal(board)">
+									<i class="fa fa-pencil"></i>
+									Rename
+								</a>
+							</li>
+							<li>
+								<a href="" ng-click="openRemoveModal(board)">
+									<i class="fa fa-trash"></i>
+									Delete
+								</a>
+							</li>
+						</ul>
+					</span>
+				</div>
 			</div>
 		</div>
-
 	</div>
+
 </div>
+
+<button class="btn btn-success btn-fab btn-raised btn-main-action ripple-effect visible-xs"
+		title="Create new board"
+		ng-click="openBoardWizard()">
+	<i class="mdi-content-add"></i>
+</button>
