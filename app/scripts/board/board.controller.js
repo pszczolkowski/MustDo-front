@@ -9,16 +9,21 @@
 		'$scope',
 		'toaster',
 		'ListWizard',
+		'TaskWizard',
+		'TaskDetails',
 		'List',
+		'Task',
 		'board',
 		'lists'];
 
-	function BoardController($scope, toaster, ListWizard, List, board, lists) {
+	function BoardController($scope, toaster, ListWizard, TaskWizard, TaskDetails, List, Task, board, lists) {
 		$scope.board = board;
 		$scope.lists = lists;
 		$scope.openListWizard = openListWizard;
 		$scope.openRemoveListModal = openRemoveListModal;
 		$scope.openRenameListModal = openRenameListModal;
+		$scope.openTaskWizard = openTaskWizard;
+		$scope.openTaskDetails = openTaskDetails;
 
 
 		function openListWizard() {
@@ -77,6 +82,25 @@
 					break;
 				}
 			}
+		}
+
+		function openTaskWizard(list) {
+			TaskWizard.open(list).then(function () {
+				toaster.pop('success', 'Created', 'New task has been created');
+				reloadList(list);
+			});
+		}
+
+		function openTaskDetails(task) {
+			TaskDetails.open(task).then(function () {
+				for (var i = 0; i < $scope.lists.length; i++) {
+					for (var j = 0; j < $scope.lists[i].tasks.length; j++) {
+						if (task.id === $scope.lists[i].tasks[j].id) {
+							reloadList($scope.lists[i]);
+						}
+					}
+				}
+			});
 		}
 	}
 })();

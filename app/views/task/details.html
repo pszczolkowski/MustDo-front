@@ -1,0 +1,46 @@
+<div class="modal-header">
+	<h4 class="modal-title">
+		Task details
+	</h4>
+
+</div>
+
+<div class="modal-body">
+
+	<form class="form-horizontal">
+
+		<div class="form-group">
+			<label for="taskTitle" class="col-sm-2">Title</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="taskTitle" ng-model="title" />
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<div class="row">
+
+		<div class="col-xs-6 text-left">
+			<button class="btn btn-danger btn-flat" title="Delete task" ng-click="remove()">
+				<i class="mdi-action-delete"></i>
+			</button>
+		</div>
+
+		<div class="col-xs-6 text-right">
+			<button class="btn btn-success" type="button" ng-click="save()" ng-disabled="newTaskForm.$invalid">
+				<i class="fa fa-check"></i>
+				Save
+			</button>
+
+			<button class="btn btn-material-deep-orange" type="button" ng-click="$dismiss()">
+				<i class="fa fa-times"></i>
+				Cancel
+			</button>
+		</div>
+
+	</div>
+
+</div>
