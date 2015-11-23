@@ -12,11 +12,25 @@
 		<div class="form-group">
 			<label for="taskTitle" class="col-sm-2">Title</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="taskTitle" ng-model="title" />
+				<input type="text" class="form-control" id="taskTitle" ng-model="title" ng-blur="save()" />
 			</div>
 		</div>
 
 	</form>
+
+	<div ng-repeat="comment in comments">
+		<strong>{{comment.username}}</strong>
+		{{comment.text}}
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<textarea class="form-control" placeholder="Write a comment..." rows="1"></textarea>
+			<button class="btn btn-sm btn-success" ng-click="addComment()">
+				Add comment
+			</button>
+		</div>
+	</div>
 
 </div>
 
@@ -30,14 +44,9 @@
 		</div>
 
 		<div class="col-xs-6 text-right">
-			<button class="btn btn-success" type="button" ng-click="save()" ng-disabled="newTaskForm.$invalid">
-				<i class="fa fa-check"></i>
-				Save
-			</button>
-
-			<button class="btn btn-material-deep-orange" type="button" ng-click="$dismiss()">
+			<button class="btn btn-material-blue" type="button" ng-click="$dismiss()">
 				<i class="fa fa-times"></i>
-				Cancel
+				Close
 			</button>
 		</div>
 

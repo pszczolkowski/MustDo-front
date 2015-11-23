@@ -9,13 +9,19 @@
 		'$scope',
 		'$modalInstance',
 		'toaster',
+		'Comment',
 		'Task',
-		'task'];
+		'task',
+		'callback'];
 
-	function TaskDetailsController($scope, $modalInstance, toaster, Task, task) {
+	function TaskDetailsController($scope, $modalInstance, toaster, Comment, Task, task, callback) {
 		$scope.title = task.title;
+		$scope.commentText = '';
 		$scope.save = save;
 		$scope.remove = remove;
+		$scope.addComment = addComment;
+
+		loadComments();
 
 
 		function save() {
@@ -25,7 +31,7 @@
 			}).$promise
 				.then(function () {
 					toaster.pop('success', 'Task has been saved');
-					$modalInstance.close();
+					callback();
 				}, function () {
 					toaster.pop('error', 'Some error occured');
 				});
@@ -35,9 +41,33 @@
 			Task.delete({taskId: task.id}).$promise
 				.then(function () {
 					toaster.pop('success', 'Task has been deleted');
-					$modalInstance.close();
+					callback();
 				}, function () {
 					toaster.pop('error', 'Some error occured');
+				});
+		}
+
+		function addComment() {
+			if ($scope.commentText.length === 0) {
+				return;
+			}
+
+			var comment = new Comment();
+			comment.text = $scope.commentText;
+
+			comment.$save().then(function () {
+				$scope.commentText = '';
+				loadComments();
+			});
+		}
+
+		function loadComments() {
+			$scope.loadingComments = true;
+
+			Comment.query({taskId: task.id}).$promise
+				.then(function (comments) {
+					$scope.comments = comments;
+					$scope.loadingComments = false;
 				});
 		}
 	}

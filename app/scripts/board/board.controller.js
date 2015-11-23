@@ -92,11 +92,14 @@
 		}
 
 		function openTaskDetails(task) {
-			TaskDetails.open(task).then(function () {
-				for (var i = 0; i < $scope.lists.length; i++) {
-					for (var j = 0; j < $scope.lists[i].tasks.length; j++) {
-						if (task.id === $scope.lists[i].tasks[j].id) {
-							reloadList($scope.lists[i]);
+			TaskDetails.open({
+				task: task,
+				callback: function () {
+					for (var i = 0; i < $scope.lists.length; i++) {
+						for (var j = 0; j < $scope.lists[i].tasks.length; j++) {
+							if (task.id === $scope.lists[i].tasks[j].id) {
+								reloadList($scope.lists[i]);
+							}
 						}
 					}
 				}

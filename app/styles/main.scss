@@ -8,6 +8,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "dashboard/_dashboard";
 @import "login/login";
 
+$loading-bar-color: red;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -107,4 +109,15 @@ body {
 
 .btn-no-margin {
 	margin: 0 !important;
+}
+
+#loading-bar .bar {
+	background: $loading-bar-color;
+}
+/* Fancy blur effect */
+#loading-bar .peg {
+	-moz-box-shadow: $loading-bar-color 1px 0 6px 1px;
+	-ms-box-shadow: $loading-bar-color 1px 0 6px 1px;
+	-webkit-box-shadow: $loading-bar-color 1px 0 6px 1px;
+	box-shadow: $loading-bar-color 1px 0 6px 1px;
 }
