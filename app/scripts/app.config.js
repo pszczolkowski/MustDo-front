@@ -35,10 +35,11 @@
 	configure.$inject = [
 		'$urlRouterProvider',
 		'$stateProvider',
-		'$httpProvider'
+		'$httpProvider',
+		'cfpLoadingBarProvider'
 	];
 
-	function configure($urlRouterProvider, $stateProvider, $httpProvider) {
+	function configure($urlRouterProvider, $stateProvider, $httpProvider, cfpLoadingBarProvider) {
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider.state('root', {
@@ -58,6 +59,9 @@
 		});
 
 		$httpProvider.interceptors.push('authInterceptor');
+
+		// Angular loading bar
+		cfpLoadingBarProvider.includeSpinner = false;
 	}
 
 })();

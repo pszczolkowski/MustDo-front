@@ -9,6 +9,7 @@
 			'ngAnimate',
 			'ui.router',
 			'ui.bootstrap',
-			'toaster'
+			'toaster',
+			'angular-loading-bar'
 		]);
 })();
