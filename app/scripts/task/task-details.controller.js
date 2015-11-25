@@ -58,6 +58,7 @@
 
 			comment.$save().then(function () {
 				$scope.commentText = '';
+				toaster.pop('success', 'Comment has been added');
 				loadComments();
 			});
 		}

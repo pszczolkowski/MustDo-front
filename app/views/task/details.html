@@ -18,9 +18,14 @@
 
 	</form>
 
-	<div ng-repeat="comment in comments">
-		<strong>{{comment.username}}</strong>
-		{{comment.text}}
+	<div ng-repeat="comment in comments" class="panel panel-default">
+		<div class="panel-body">
+			<strong>{{comment.username}}</strong>
+			{{comment.text}}
+			<small class="pull-right">
+				{{comment.createdAt}}
+			</small>
+		</div>
 	</div>
 
 	<div class="panel panel-default">
