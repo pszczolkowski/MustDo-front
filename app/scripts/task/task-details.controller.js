@@ -53,6 +53,7 @@
 			}
 
 			var comment = new Comment();
+			comment.taskId = task.id;
 			comment.text = $scope.commentText;
 
 			comment.$save().then(function () {
