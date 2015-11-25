@@ -8,6 +8,11 @@
 	Comment.$inject = ['$resource', 'config'];
 
 	function Comment($resource, config) {
-		return $resource(config.apiUrl + '/comment/:taskId');
+		return $resource(config.apiUrl + '/task/:taskId/comment', {}, {
+			save: {
+				url: config.apiUrl + '/task/comment',
+				method: 'POST'
+			}
+		});
 	}
 })();
