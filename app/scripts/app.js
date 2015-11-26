@@ -10,6 +10,7 @@
 			'ui.router',
 			'ui.bootstrap',
 			'toaster',
-			'angular-loading-bar'
+			'angular-loading-bar',
+			'as.sortable'
 		]);
 })();

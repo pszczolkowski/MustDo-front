@@ -1,50 +1,56 @@
-<div ng-repeat="list in lists"
-	 class="list panel panel-default">
-	<div class="panel-body">
-		<header>
-			<span class="dropdown pull-right">
-				<button class="btn btn-xs btn-no-margin" title="Options" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					<i class="fa fa-bars"></i>
-				</button>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="" ng-click="openTaskWizard(list)">
-							<i class="fa fa-plus"></i>
-							Add task
-						</a>
-					</li>
-					<li>
-						<a href="" ng-click="openRenameListModal(list)">
-							<i class="fa fa-pencil"></i>
-							Rename
-						</a>
-					</li>
-					<li>
-						<a href="" ng-click="openRemoveListModal(list)">
-							<i class="fa fa-trash"></i>
-							Delete
-						</a>
-					</li>
-				</ul>
-			</span>
+<div class="board">
+	<div ng-repeat="list in lists"
+		 class="list panel panel-default">
+		<div class="panel-body">
+			<header>
+				<span class="dropdown pull-right">
+					<button class="btn btn-xs btn-no-margin" title="Options" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="" ng-click="openTaskWizard(list)">
+								<i class="fa fa-plus"></i>
+								Add task
+							</a>
+						</li>
+						<li>
+							<a href="" ng-click="openRenameListModal(list)">
+								<i class="fa fa-pencil"></i>
+								Rename
+							</a>
+						</li>
+						<li>
+							<a href="" ng-click="openRemoveListModal(list)">
+								<i class="fa fa-trash"></i>
+								Delete
+							</a>
+						</li>
+					</ul>
+				</span>
 
-			<strong>{{list.name}}</strong>
-		</header>
+				<strong>{{list.name}}</strong>
+			</header>
 
-		<div class="task editable clickable"
-			 ng-repeat="task in list.tasks"
-			 ng-click="openTaskDetails(task)">
-			{{task.title}}
-			<i class="fa fa-pencil pull-right edit-icon"></i>
+			<div as-sortable="dragListeners" ng-model="list.tasks" class="task-wrapper">
+				<div class="task editable"
+					 ng-repeat="task in list.tasks"
+					 as-sortable-item>
+					<div as-sortable-item-handle>
+						{{task.title}}
+						<i class="fa fa-pencil pull-right edit-icon" ng-click="openTaskDetails(task)"></i>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 
-<button class="btn btn-success btn-raised ripple-effect hidden-xs"
-		title="Add new list"
-		ng-click="openListWizard()">
-	<i class="mdi-content-add"></i>
-</button>
+	<button class="btn btn-success btn-raised ripple-effect hidden-xs"
+			title="Add new list"
+			ng-click="openListWizard()">
+		<i class="mdi-content-add"></i>
+	</button>
+</div>
 
 <button class="btn btn-success btn-fab btn-raised btn-main-action ripple-effect visible-xs"
 		title="Add new list"

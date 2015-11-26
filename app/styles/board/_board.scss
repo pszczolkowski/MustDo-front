@@ -1,3 +1,8 @@
+.board {
+	align-items: flex-start;
+	display: flex;
+}
+
 .list {
 	display: inline-block;
 	margin-right: 20px;
@@ -5,13 +10,27 @@
 }
 
 .task {
+	background-color: white;
 	border: 1px solid #ccc;
 	margin-top: 10px;
-	padding: 5px;
+
+	div {
+		padding: 5px;
+	}
+}
+
+.as-sortable-placeholder {
+	background-color: #ddd;
+	margin-top: 10px;
+}
+
+.task-wrapper {
+	min-height: 25px;
 }
 
 .edit-icon {
 	color: #999;
+	cursor: pointer;
 	display: none !important;
 
 	&:hover {

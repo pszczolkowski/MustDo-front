@@ -24,6 +24,10 @@
 		$scope.openRenameListModal = openRenameListModal;
 		$scope.openTaskWizard = openTaskWizard;
 		$scope.openTaskDetails = openTaskDetails;
+		$scope.dragListeners = {
+			itemMoved: onTaskMove,
+			orderChanged: onTaskMove
+		};
 
 
 		function openListWizard() {
@@ -104,6 +108,26 @@
 					}
 				}
 			});
+		}
+
+		function onTaskMove(event) {
+			var task = event.source.itemScope.modelValue;
+			var list = event.dest.sortableScope.$parent.list;
+
+			Task.move({
+				id: task.id,
+				listId: list.id,
+				position: event.dest.index
+			}).$promise.then(function () {
+					for (var i = 0; i < $scope.lists.length; i++) {
+						if ($scope.lists[i].id === task.listId) {
+							reloadList($scope.lists[i]);
+							break;
+						}
+					}
+
+					toaster.pop('success', 'Task moved');
+				});
 		}
 	}
 })();

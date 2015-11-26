@@ -12,6 +12,10 @@
 			update: {
 				url: config.apiUrl + '/task',
 				method: 'PUT'
+			},
+			move: {
+				url: config.apiUrl + '/task/move',
+				method: 'POST'
 			}
 		});
 	}
