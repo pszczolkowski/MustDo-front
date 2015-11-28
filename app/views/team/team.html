@@ -1,0 +1,34 @@
+<h3>Team <strong>{{team.name}}</strong></h3>
+
+<div class="list-group">
+	<div class="list-group-item" ng-repeat-start="member in team.members">
+		<div class="row-action-primary">
+			<i class="fa fa-user"></i>
+		</div>
+		<div>
+			<p class="list-group-item-text">
+				<strong>{{member.login}}</strong>
+			</p>
+
+			<button class="btn btn-danger btn-fab btn-fab-mini pull-right" ng-click="removeMember(member)">
+				<i class="fa fa-times"></i>
+			</button>
+		</div>
+	</div>
+	<div class="list-group-separator" ng-repeat-end></div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="col-xs-8">
+			<input type="text" class="form-control" ng-model="newMember" />
+		</div>
+		<div class="col-xs-4">
+			<button class="btn btn-success btn-raised btn-no-margin ripple-effect hidden-xs pull-right"
+					title="Add new member"
+					ng-click="addMember()">
+				Add
+			</button>
+		</div>
+	</div>
+</div>

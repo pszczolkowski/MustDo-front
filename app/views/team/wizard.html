@@ -1,0 +1,50 @@
+<div class="modal-header">
+	<h4 class="modal-title">
+		Create new team
+	</h4>
+</div>
+
+<div class="modal-body">
+
+	<form name="newTeamForm" class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2">
+				Team name
+				<span class="text-danger">*</span>
+			</label>
+			<div class="col-sm-10">
+				<input type="text"
+					   name="name"
+					   ng-model="name"
+					   class="form-control"
+					   ng-minlength="3"
+					   ng-maxlength="20"
+					   required />
+
+				<p class="text-danger" ng-show="newTeamForm.name.$dirty && newTeamForm.name.$error.required">
+					Team name is required
+				</p>
+				<p class="text-danger" ng-show="newTeamForm.name.$dirty && newTeamForm.name.$error.minlength">
+					Team name too short. It should have at least 3 characters
+				</p>
+				<p class="text-danger" ng-show="newTeamForm.name.$dirty && newTeamForm.name.$error.maxlength">
+					Team name too long. It can have max 20 characters
+				</p>
+			</div>
+		</div>
+	</form>
+
+</div>
+
+<div class="modal-footer">
+
+	<button class="btn btn-success" type="button" ng-click="create()" ng-disabled="newTeamForm.$invalid">
+		<i class="fa fa-check"></i>
+		Create
+	</button>
+
+	<button class="btn btn-primary" type="button" ng-click="$dismiss()">
+		<i class="fa fa-times"></i>
+		Cancel
+	</button>
+</div>

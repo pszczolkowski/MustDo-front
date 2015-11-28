@@ -55,6 +55,34 @@
 
 </div>
 
+<div ng-if="teams.length > 0">
+	<div class="row">
+		<div class="col-sm-8">
+			<h2>
+				Your teams
+			</h2>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-success btn-raised ripple-effect hidden-xs pull-right"
+					title="Create new team"
+					ng-click="openTeamWizard()">
+				Create new team
+			</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="team in teams">
+			<div class="panel panel-default clickable" ng-click="$event.originalEvent.menuClicked || openTeam(team)">
+				<div class="panel-body">
+					<strong>{{team.name}}</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
 <button class="btn btn-success btn-fab btn-raised btn-main-action ripple-effect visible-xs"
 		title="Create new board"
 		ng-click="openBoardWizard()">

@@ -10,15 +10,20 @@
 		'$state',
 		'toaster',
 		'BoardWizard',
+		'TeamWizard',
 		'Board',
-		'boards'];
+		'boards',
+		'teams'];
 
-	function DashboardController($scope, $state, toaster, BoardWizard, Board, boards) {
+	function DashboardController($scope, $state, toaster, BoardWizard, TeamWizard, Board, boards, teams) {
 		$scope.boards = boards;
+		$scope.teams = teams;
 		$scope.openBoardWizard = openBoardWizard;
 		$scope.openBoard = openBoard;
 		$scope.openRenameModal = openRenameModal;
 		$scope.openRemoveModal = openRemoveModal;
+		$scope.openTeam = openTeam;
+		$scope.openTeamWizard = openTeamWizard;
 
 
 		function openBoardWizard() {
@@ -40,6 +45,10 @@
 			$state.go('board', {boardId: board.id, boardName: board.name});
 		}
 
+		function openTeam(team) {
+			$state.go('team', {teamId: team.id});
+		}
+
 		function openRenameModal(board) {
 			BoardWizard.rename(board)
 				.then(function () {
@@ -53,6 +62,21 @@
 				.then(function () {
 					reloadBoards();
 					toaster.pop('success', 'Deleted', 'Board has been deleted');
+				});
+		}
+
+		function openTeamWizard() {
+			TeamWizard.open()
+				.then(function (team) {
+					toaster.pop('success', 'Created', 'New team has been created');
+					openTeam(team);
+				});
+		}
+
+		function reloadTeams() {
+			Team.query().$promise
+				.then(function (teams) {
+					$scope.teams = teams;
 				});
 		}
 	}

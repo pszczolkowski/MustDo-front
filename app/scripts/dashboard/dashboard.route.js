@@ -9,6 +9,7 @@
 
 	function DashboardRouteProvider($stateProvider) {
 		var resolveBoards = ['Board', loadBoards];
+		var resolveTeams = ['Team', loadTeams];
 
 		$stateProvider.state('dashboard', {
 			parent: 'root',
@@ -16,13 +17,18 @@
 			templateUrl: 'views/dashboard/dashboard.html',
 			controller: 'DashboardController',
 			resolve: {
-				boards: resolveBoards
+				boards: resolveBoards,
+				teams: resolveTeams
 			}
 		});
 
 
 		function loadBoards(Board) {
 			return Board.query().$promise;
+		}
+
+		function loadTeams(Team) {
+			return Team.query().$promise;
 		}
 	}
 })();
