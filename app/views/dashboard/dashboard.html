@@ -25,7 +25,7 @@
 
 	<div class="row" id="dashboard-boards-list">
 		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="board in boards">
-			<div class="panel panel-default clickable" ng-click="$event.originalEvent.menuClicked || openBoard(board)">
+			<div class="panel panel-default clickable board" ng-click="$event.originalEvent.menuClicked || openBoard(board)">
 				<div class="panel-body">
 					<strong>{{board.name}}</strong>
 
@@ -73,7 +73,7 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="team in teams">
-			<div class="panel panel-default clickable" ng-click="$event.originalEvent.menuClicked || openTeam(team)">
+			<div class="panel panel-default team clickable" ng-click="$event.originalEvent.menuClicked || openTeam(team)">
 				<div class="panel-body">
 					<strong>{{team.name}}</strong>
 				</div>
