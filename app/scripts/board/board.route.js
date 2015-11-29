@@ -10,6 +10,7 @@
 	function BoardRouteProvider($stateProvider) {
 		var resolveSingleBoard = ['$stateParams', 'Board', loadSingleBoard];
 		var resolveLists = ['$stateParams', 'List', loadLists];
+		var resolveTeam = ['$stateParams', 'Team', loadTeam];
 
 		$stateProvider.state('board', {
 			parent: 'root',
@@ -27,7 +28,8 @@
 			},
 			resolve: {
 				board: resolveSingleBoard,
-				lists: resolveLists
+				lists: resolveLists,
+				team: resolveTeam
 			}
 		});
 
@@ -40,6 +42,12 @@
 
 		function loadLists($stateParams, List) {
 			return List.query({
+				boardId: $stateParams.boardId
+			}).$promise;
+		}
+
+		function loadTeam($stateParams, Team) {
+			return Team.get({
 				boardId: $stateParams.boardId
 			}).$promise;
 		}

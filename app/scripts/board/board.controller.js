@@ -14,11 +14,13 @@
 		'List',
 		'Task',
 		'board',
-		'lists'];
+		'lists',
+		'team'];
 
-	function BoardController($scope, toaster, ListWizard, TaskWizard, TaskDetails, List, Task, board, lists) {
+	function BoardController($scope, toaster, ListWizard, TaskWizard, TaskDetails, List, Task, board, lists, team) {
 		$scope.board = board;
 		$scope.lists = lists;
+		$scope.team = team;
 		$scope.openListWizard = openListWizard;
 		$scope.openRemoveListModal = openRemoveListModal;
 		$scope.openRenameListModal = openRenameListModal;
@@ -98,6 +100,7 @@
 		function openTaskDetails(task) {
 			TaskDetails.open({
 				task: task,
+				team: team,
 				callback: function () {
 					for (var i = 0; i < $scope.lists.length; i++) {
 						for (var j = 0; j < $scope.lists[i].tasks.length; j++) {

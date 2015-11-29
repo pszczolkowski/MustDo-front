@@ -18,6 +18,24 @@
 
 	</form>
 
+	<div class="row">
+		<div class="col-xs-2">
+			Assign to:
+		</div>
+		<div class="col-xs-10">
+			<select class="form-control"
+					ng-options="member.id as member.login for member in team.members"
+					ng-model="assignedTo"
+					ng-change="assign()">
+				<option value="">
+					not asssigned
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<br />
+
 	<div ng-repeat="comment in comments" class="panel panel-default">
 		<div class="panel-body">
 			<strong>{{comment.username}}</strong>

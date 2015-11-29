@@ -22,6 +22,9 @@
 					task: function () {
 						return params.task;
 					},
+					team: function () {
+						return params.team;
+					},
 					callback: function () {
 						return params.callback;
 					}

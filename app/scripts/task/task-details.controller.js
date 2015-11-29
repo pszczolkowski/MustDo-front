@@ -12,14 +12,18 @@
 		'Comment',
 		'Task',
 		'task',
+		'team',
 		'callback'];
 
-	function TaskDetailsController($scope, $modalInstance, toaster, Comment, Task, task, callback) {
+	function TaskDetailsController($scope, $modalInstance, toaster, Comment, Task, task, team, callback) {
 		$scope.title = task.title;
+		$scope.team = team;
+		$scope.assignedTo = task.assignedTo;
 		$scope.commentText = '';
 		$scope.save = save;
 		$scope.remove = remove;
 		$scope.addComment = addComment;
+		$scope.assign = assign;
 
 		loadComments();
 
@@ -70,6 +74,17 @@
 				.then(function (comments) {
 					$scope.comments = comments;
 					$scope.loadingComments = false;
+				});
+		}
+
+		function assign() {
+			Task.assign({
+				taskId: task.id,
+				userId: $scope.assignedTo
+			}).$promise.then(function () {
+					toaster.pop('success', 'Task has been assigned');
+				}, function () {
+					toaster.pop('error', 'Some error occurred');
 				});
 		}
 	}
