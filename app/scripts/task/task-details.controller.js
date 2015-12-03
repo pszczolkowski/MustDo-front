@@ -83,6 +83,7 @@
 				userId: $scope.assignedTo
 			}).$promise.then(function () {
 					toaster.pop('success', 'Task has been assigned');
+					callback();
 				}, function () {
 					toaster.pop('error', 'Some error occurred');
 				});
