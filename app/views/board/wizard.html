@@ -37,10 +37,35 @@
 			<label class="col-sm-2">
 				Team
 			</label>
+
 			<div class="col-sm-10">
+				<label>
+					<input type="radio" name="board-wizard-radio-team" ng-model="teamOption" value="existing" />
+					Select existing
+				</label>
 				<input type="text"
 					   ng-model="team"
-					   class="form-control" />
+					   class="form-control"
+					   ng-show="teamOption === 'existing'"
+					   placeholder="team name"
+					   uib-typeahead="team as team.name for team in teams | filter:$viewValue"
+					   typeahead-editable="false"
+					   typeahead-no-results="noTeams"
+					   typeahead-select-on-blur="true" />
+				<p ng-show="noTeams" class="text-danger">
+					There are no teams with given name
+				</p>
+				<br />
+
+				<label>
+					<input type="radio" name="board-wizard-radio-team" ng-model="teamOption" value="new" />
+					Create new
+				</label>
+				<input type="text"
+					   ng-model="newTeamName"
+					   class="form-control"
+					   ng-show="teamOption === 'new'"
+					   placeholder="team name"/>
 			</div>
 		</div>
 	</form>
@@ -49,7 +74,8 @@
 
 <div class="modal-footer">
 
-	<button class="btn btn-success" type="button" ng-click="create()" ng-disabled="newBoardForm.$invalid">
+	<button class="btn btn-success" type="button" ng-click="create()" ng-disabled="newBoardForm.$invalid ||
+				(teamOption === 'existing' && !team) || (teamOption === 'new' && !newTeamName)">
 		<i class="fa fa-check"></i>
 		Create
 	</button>
