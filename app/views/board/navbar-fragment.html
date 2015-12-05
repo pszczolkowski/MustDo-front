@@ -6,6 +6,13 @@
 		</a>
 		<ul class="dropdown-menu">
 			<li>
+				<a ui-sref="team({teamId: team.id})">
+					<i class="fa fa-users"></i>
+					Team <strong>{{team.name}}</strong>
+				</a>
+			</li>
+			<li role="separator" class="divider"></li>
+			<li>
 				<a href="" ng-click="openRenameModal()">
 					<i class="fa fa-pencil"></i>
 					Rename

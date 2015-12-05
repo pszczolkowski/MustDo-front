@@ -11,10 +11,12 @@
 		'toaster',
 		'BoardWizard',
 		'Board',
-		'board'];
+		'board',
+		'team'];
 
-	function BoardNavbarFragmentController($scope, $state, toaster, BoardWizard, Board, board) {
+	function BoardNavbarFragmentController($scope, $state, toaster, BoardWizard, Board, board, team) {
 		$scope.board = board;
+		$scope.team = team;
 		$scope.openRenameModal = openRenameModal;
 		$scope.openRemoveModal = openRemoveModal;
 
