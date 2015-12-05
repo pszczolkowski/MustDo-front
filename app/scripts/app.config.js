@@ -53,9 +53,11 @@
 					controller: 'NavbarController'
 				}
 			},
-			resolve: ['Auth', function (Auth) {
-				return Auth.authorize();
-			}]
+			resolve: {
+				identity: ['Auth', function (Auth) {
+					return Auth.authorize();
+				}]
+			}
 		});
 
 		$httpProvider.interceptors.push('authInterceptor');

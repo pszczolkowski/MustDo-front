@@ -1,5 +1,13 @@
 <h3>Team <strong>{{team.name}}</strong></h3>
 
+<div ng-show="team.members.length === 0" class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="alert alert-info text-center">
+			There are no members
+		</div>
+	</div>
+</div>
+
 <div class="list-group">
 	<div class="list-group-item" ng-repeat-start="member in team.members">
 		<div class="row-action-primary">

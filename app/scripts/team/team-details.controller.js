@@ -9,13 +9,27 @@
 		'$scope',
 		'toaster',
 		'Team',
-		'team'];
+		'team',
+		'identity'];
 
-	function TeamDetailsController($scope, toaster, Team, team) {
-		$scope.team = team;
+	function TeamDetailsController($scope, toaster, Team, team, identity) {
+		$scope.team = teamWithoutLoggedUser(team);
 		$scope.removeMember = removeMember;
 		$scope.addMember = addMember;
 
+
+		function teamWithoutLoggedUser(team) {
+			var newTeam = angular.copy(team);
+
+			for (var i =0; i < newTeam.members.length; i++) {
+				if (newTeam.members[i].id === identity.id) {
+					newTeam.members.splice(i, 1);
+					break;
+				}
+			}
+
+			return newTeam;
+		}
 
 		function removeMember(member) {
 			Team.removeMember({
@@ -31,7 +45,7 @@
 			Team.get({
 				teamId: $scope.team.id
 			}).$promise.then(function (team) {
-				$scope.team = team;
+				$scope.team = teamWithoutLoggedUser(team);
 			});
 		}
 
