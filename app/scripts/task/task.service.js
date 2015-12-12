@@ -20,6 +20,11 @@
 			assign: {
 				url: config.apiUrl + '/task/assign',
 				method: 'POST'
+			},
+			files: {
+				url: config.apiUrl + '/task/:taskId/file',
+				method: 'GET',
+				isArray: true
 			}
 		});
 	}

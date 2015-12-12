@@ -41,3 +41,14 @@
 .editable:hover .edit-icon {
 	display: inline-block !important;
 }
+
+.file-drop-zone {
+	border: 3px dashed #ccc;
+	border-radius: 3px;
+	padding: 11px;
+	text-align: center;
+
+	&-drag-over {
+		border: 3px dashed black;
+	}
+}

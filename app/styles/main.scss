@@ -111,6 +111,16 @@ body {
 	margin: 0 !important;
 }
 
+.btn-narrow {
+	padding-left: 7px !important;
+	padding-right: 7px !important;
+}
+
+.btn-short {
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+}
+
 #loading-bar .bar {
 	background: $loading-bar-color;
 }

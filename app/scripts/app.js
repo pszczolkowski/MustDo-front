@@ -3,14 +3,15 @@
 
 	angular
 		.module('mustDoApp', [
+			'angular-loading-bar',
+			'as.sortable',
 			'LocalStorageModule',
 			'ngCookies',
+			'ngFileUpload',
 			'ngResource',
 			'ngAnimate',
 			'ui.router',
 			'ui.bootstrap',
-			'toaster',
-			'angular-loading-bar',
-			'as.sortable'
+			'toaster'
 		]);
 })();

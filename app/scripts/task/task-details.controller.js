@@ -8,24 +8,32 @@
 	TaskDetailsController.$inject = [
 		'$scope',
 		'$modalInstance',
+		'$window',
+		'config',
+		'File',
 		'toaster',
 		'Comment',
 		'Task',
+		'Upload',
 		'task',
 		'team',
 		'callback'];
 
-	function TaskDetailsController($scope, $modalInstance, toaster, Comment, Task, task, team, callback) {
+	function TaskDetailsController($scope, $modalInstance, $window, config, File, toaster, Comment, Task, Upload, task, team, callback) {
 		$scope.title = task.title;
 		$scope.team = team;
-		$scope.assignedTo = task.assignedTo;
+				$scope.assignedTo = task.assignedTo;
 		$scope.commentText = '';
 		$scope.save = save;
 		$scope.remove = remove;
 		$scope.addComment = addComment;
 		$scope.assign = assign;
+		$scope.uploadFile = uploadFile;
+		$scope.downloadFile = downloadFile;
+		$scope.deleteFile = deleteFile;
 
 		loadComments();
+		reloadAttachements();
 
 
 		function save() {
@@ -86,6 +94,43 @@
 					callback();
 				}, function () {
 					toaster.pop('error', 'Some error occurred');
+				});
+		}
+
+		function reloadAttachements() {
+			$scope.files = Task.files({
+				taskId: task.id
+			});
+		}
+
+		function handleUploadFailure() {
+			toaster.pop('error', 'Some error occurred');
+		}
+
+		function uploadFile(file) {
+			Upload.upload({
+				url: config.apiUrl + '/file/upload',
+				data: {
+					file: file,
+					data: new Blob([angular.toJson({
+						taskId: task.id
+					})], {type: 'application/json'})
+				}
+			}).then(reloadAttachements, handleUploadFailure);
+		}
+
+		function downloadFile(file) {
+			$window.location.href = config.apiUrl + '/file/' + file.fileId;
+		}
+
+		function deleteFile(file) {
+			File.delete({
+				fileId: file.fileId
+			}).$promise.then(function () {
+					toaster.pop('success', 'Attachement deleted');
+					reloadAttachements();
+				}, function () {
+					toaster.pop('error', 'Some error occured');
 				});
 		}
 	}
