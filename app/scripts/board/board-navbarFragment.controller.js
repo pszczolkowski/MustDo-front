@@ -19,6 +19,8 @@
 		$scope.team = team;
 		$scope.openRenameModal = openRenameModal;
 		$scope.openRemoveModal = openRemoveModal;
+		$scope.makeItPublic = makeItPublic;
+		$scope.makeItAnonymous = makeItAnonymous;
 
 
 		function openRenameModal() {
@@ -42,6 +44,28 @@
 				.then(function () {
 					toaster.pop('success', 'Deleted', 'Board has been deleted');
 					$state.go('dashboard');
+				});
+		}
+
+		function makeItPublic() {
+			Board.makePublic({
+				boardId: $scope.board.id
+			}).$promise.then(function () {
+					toaster.pop('success', 'Published', 'Board has been published');
+					reloadBoard();
+				}, function () {
+					toaster.pop('error', 'Failure', 'Some error occured');
+				});
+		}
+
+		function makeItAnonymous() {
+			Board.makePrivate({
+				boardId: $scope.board.id
+			}).$promise.then(function () {
+					toaster.pop('success', 'Hidden', 'Board has been hidden');
+					reloadBoard();
+				}, function () {
+					toaster.pop('error', 'Failure', 'Some error occured');
 				});
 		}
 	}
