@@ -50,8 +50,8 @@
 		}
 
 		function authorize(force) {
-			return Principal.identity(force)
-				.then(function() {
+			var promise = Principal.identity(force);
+			promise.then(function() {
 					var isAuthenticated = Principal.isAuthenticated();
 
 					if ($rootScope.toState.name === 'login' || $rootScope.toState.name === 'register') {
@@ -62,6 +62,8 @@
 						$state.go('login');
 					}
 				});
+
+			return promise;
 		}
 
 		function createAccount(account, callback) {

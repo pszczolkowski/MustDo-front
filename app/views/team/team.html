@@ -1,5 +1,13 @@
 <h3>Team <strong>{{team.name}}</strong></h3>
 
+<div ng-show="team.members.length === 0" class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="alert alert-info text-center">
+			There are no members
+		</div>
+	</div>
+</div>
+
 <div class="list-group">
 	<div class="list-group-item" ng-repeat-start="member in team.members">
 		<div class="row-action-primary">
@@ -21,12 +29,22 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="col-xs-8">
-			<input type="text" class="form-control" ng-model="newMember" />
+			<input type="text"
+				   class="form-control"
+				   ng-model="newMember"
+				   uib-typeahead="user as user.login for user in users | filter:$viewValue"
+				   typeahead-editable="false"
+				   typeahead-no-results="noUsers"
+				   typeahead-select-on-blur="true"/>
+			<p ng-show="noUsers" class="text-danger">
+				There are no users with given login
+			</p>
 		</div>
 		<div class="col-xs-4">
 			<button class="btn btn-success btn-raised btn-no-margin ripple-effect hidden-xs pull-right"
 					title="Add new member"
-					ng-click="addMember()">
+					ng-click="addMember()"
+					ng-disabled="!newMember || noUsers">
 				Add
 			</button>
 		</div>

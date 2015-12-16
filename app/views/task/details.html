@@ -55,6 +55,27 @@
 		</div>
 	</div>
 
+	Attachments:
+	<ul>
+		<li ng-repeat="file in files track by file.fileId">
+			{{file.fileName}}
+			<button class="btn btn-info btn-flat btn-narrow btn-short" ng-click="downloadFile(file)">
+				<i class="fa fa-download"></i>
+			</button>
+			<button class="btn btn-danger btn-flat btn-narrow btn-short" ng-click="deleteFile(file)">
+				<i class="fa fa-trash"></i>
+			</button>
+		</li>
+	</ul>
+
+	<form name="fileUploadForm">
+		<div class="file-drop-zone"
+			 ngf-drop="uploadFile($file)"
+			 ngf-drag-over-class="'file-drop-zone-drag-over'">
+			Drop files here
+		</div>
+	</form>
+
 </div>
 
 <div class="modal-footer">

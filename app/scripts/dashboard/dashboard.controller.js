@@ -12,10 +12,11 @@
 		'BoardWizard',
 		'TeamWizard',
 		'Board',
+		'Team',
 		'boards',
 		'teams'];
 
-	function DashboardController($scope, $state, toaster, BoardWizard, TeamWizard, Board, boards, teams) {
+	function DashboardController($scope, $state, toaster, BoardWizard, TeamWizard, Board, Team, boards, teams) {
 		$scope.boards = boards;
 		$scope.teams = teams;
 		$scope.openBoardWizard = openBoardWizard;
@@ -30,6 +31,7 @@
 			BoardWizard.open()
 				.then(function () {
 					reloadBoards();
+					reloadTeams();
 					toaster.pop('success', 'Created', 'New board has been created');
 				});
 		}

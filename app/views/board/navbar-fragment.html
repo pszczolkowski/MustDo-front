@@ -6,6 +6,25 @@
 		</a>
 		<ul class="dropdown-menu">
 			<li>
+				<a ui-sref="team({teamId: team.id})">
+					<i class="fa fa-users"></i>
+					Team <strong>{{team.name}}</strong>
+				</a>
+			</li>
+			<li role="separator" class="divider"></li>
+			<li ng-show="!board.public">
+				<a href="" ng-click="makeItPublic()">
+					<i class="fa fa-share-alt"></i>
+					Make it public
+				</a>
+			</li>
+			<li ng-show="board.public">
+				<a href="" ng-click="makeItAnonymous()">
+					<i class="fa fa-user-secret"></i>
+					Make it anonymous
+				</a>
+			</li>
+			<li>
 				<a href="" ng-click="openRenameModal()">
 					<i class="fa fa-pencil"></i>
 					Rename
